@@ -1,0 +1,38 @@
+[
+  {
+    "id": "606309b8c9635",
+    "name": "Huawei P30 Pro",
+    "price": 199990,
+    "isInStock": false
+  },
+  {
+    "id": "606313aad9846",
+    "name": "Samsung Galaxy S21",
+    "price": 221000,
+    "isInStock": true
+  },
+  {
+    "id": "606313aad9847",
+    "name": "Apple iPhone 13",
+    "price": 176000,
+    "isInStock": true
+  },
+  {
+    "id": "606313aad9848",
+    "name": "Xiaomi Redmi Note",
+    "price": 119900,
+    "isInStock": false
+  },
+  {
+    "id": "606313aad9849",
+    "name": "Samsung Galaxy A52",
+    "price": 134990,
+    "isInStock": false
+  },
+  {
+    "id": "606313aad9841",
+    "name": "Huawei Nova 123",
+    "price": 119900,
+    "isInStock": true
+  }
+]
