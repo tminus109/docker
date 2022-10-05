@@ -1,0 +1,21 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  RewriteCond %{REQUEST_URI} ^.*static/(.*)
+  RewriteRule ^(.*)$ src/build/static/%1 [END]
+
+  RewriteCond %{REQUEST_URI} ^.*manifest.json
+  RewriteRule ^(.*)$ src/build/manifest.json [END]
+
+  RewriteCond %{REQUEST_URI} ^.*logo192
+  RewriteRule ^(.*)$ src/build/logo192.png [END]
+
+  RewriteCond %{REQUEST_URI} ^.*favicon
+  RewriteRule ^(.*)$ src/favicon.ico [END]
+
+
+  SetEnv JWT_TOKEN_SECRET SDr45j8dY4KJADCh
+
+  # Minden más esetben az index.php-t futtasd le
+  RewriteRule (.*)  src/index.php [QSA]
+</IfModule>
