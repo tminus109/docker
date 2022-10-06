@@ -1,0 +1,42 @@
+version: "3"
+
+services:
+
+  taxi_server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: taxi_server
+    ports:
+      - "8080:3000"
+    volumes:
+      - "./server/src:/server/src"
+    environment:
+      DB_CONNECTION: "mongodb://admin:password@taxi_db:27017"
+    networks:
+      - taxi_net
+    depends_on:
+      - taxi_db
+
+  taxi_db:
+    build:
+      context: ./db
+      dockerfile: Dockerfile
+    container_name: taxi_db
+    volumes:
+      - "./db/backup:/data/db"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: "admin"
+      MONGO_INITDB_ROOT_PASSWORD: "password"
+    networks:
+      - taxi_net
+
+networks:
+
+  taxi_net:
+    driver: bridge
+
+
+# docker compose up
+# docker compose down
+# docker compose up --build

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Taxi app</h1>
+
+      <div class="row">
+        <div class="col-sm-6 border-right">
+          <h3>Cars:</h3>
+          <div id="car-list-component"></div>
+          <h3>Új kocsi:</h3>
+          <form id="create-car-component">
+            <label class="w-100">
+              Név:
+              <input type="text" name="name" class="form-control" />
+            </label>
+            <label class="w-100">
+              Rendszám:
+              <input type="text" name="licenseNumber" class="form-control" />
+            </label>
+            <label class="w-100">
+              Óradíj:
+              <input type="number" name="hourlyRate" class="form-control" />
+            </label>
+            <button class="btn btn-outline-primary">Mentés</button>
+          </form>
+        </div>
+        <div class="col-6">
+          <div id="trip-list-component"></div>
+        </div>
+      </div>
+    </div>
+    <script src="/moment.min.js"></script>
+    <script src="/script.js"></script>
+  </body>
+</html>
