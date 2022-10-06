@@ -1,0 +1,26 @@
+Build images:
+
+docker build ./db -t taxi_db
+docker build ./server -t taxi_app
+
+Create network:
+
+docker network create taxi_net
+
+Run containers:
+
+docker run -d \
+-v $PWD/db/backup:/data/db \
+-e MONGO_INITDB_ROOT_USERNAME="admin" \
+-e MONGO_INITDB_ROOT_PASSWORD="password" \
+--name taxi_db \
+--network taxi_net \
+taxi_db
+
+docker run \
+-p 8080:3000 \
+-v $PWD/server/src:/server/src \
+-e DB_CONNECTION="mongodb://admin:password@taxi_db:27017" \
+--name taxi_app \
+--network taxi_net \
+taxi_app
