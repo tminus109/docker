@@ -1,0 +1,50 @@
+version: "3.9"
+services:
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    volumes:
+      - "./server/src:/var/www/html/src"
+      - "./server/.htaccess:/var/www/html/.htaccess"
+    ports:
+      - "8080:80"
+    networks:
+      - net
+    depends_on:
+      - db
+  db:
+    build:
+      context: ./db
+      dockerfile: Dockerfile
+    environment:
+      MYSQL_DATABASE: "database"
+      MYSQL_USER: "user"
+      MYSQL_PASSWORD: "password"
+      MYSQL_ROOT_PASSWORD: "password"
+    networks:
+      - net
+  phpmyadmin:
+    image: "phpmyadmin/phpmyadmin"
+    environment:
+      PMA_HOST: "db"
+      PMA_USER: "user"
+      PMA_PASSWORD: "password"
+      PMA_PORT: "3306"
+    ports:
+      - "8181:80"
+    networks:
+      - net
+    depends_on:
+      - db
+  worker:
+    build:
+      context: ./worker
+      dockerfile: Dockerfile
+    networks:
+      - net
+    depends_on:
+      - server
+networks:
+  net:
+    driver: bridge
