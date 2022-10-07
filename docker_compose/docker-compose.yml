@@ -1,7 +1,5 @@
 version: "3"
-
 services:
-
   taxi_server:
     build:
       context: ./server
@@ -17,7 +15,6 @@ services:
       - taxi_net
     depends_on:
       - taxi_db
-
   taxi_db:
     build:
       context: ./db
@@ -30,9 +27,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: "password"
     networks:
       - taxi_net
-
 networks:
-
   taxi_net:
     driver: bridge
 
