@@ -1,5 +1,5 @@
 FROM alpine:3.6
 
-COPY cronjobs /etc/crontabs/root
+COPY entrypoint.sh /etc/entrypoint.sh
 
-CMD ["crond", "-f", "-d", "8"]
+ENTRYPOINT ["/bin/sh", "/etc/entrypoint.sh"]
